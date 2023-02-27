@@ -13,5 +13,11 @@ def check_username_password(user):
                     print("You have been logged in")
                     conf_bool = False
 
+def check_balances(user):
+    print(f"Venmo: ${user['account_balance']}")
+    for bank_tuples in user["connected_banks"]:
+        print(f"{bank_tuples[0]}: ${bank_tuples[1]}")
 
-check_username_password(user_one)
+
+# check_username_password(user_one)
+check_balances(user_one)
