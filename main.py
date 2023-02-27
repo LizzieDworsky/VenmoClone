@@ -18,6 +18,26 @@ def check_balances(user):
     for bank_tuples in user["connected_banks"]:
         print(f"{bank_tuples[0]}: ${bank_tuples[1]}")
 
+def transfer_amount(user):
+    while True:
+        amount = int(input("How much would you like to transfer, numbers only: "))
+        if amount <= user["account_balance"]:
+            return amount
+        else:
+            print(f"Insufficient balance, you have {user['account_balance']}")
+
+def transfer_money(transferor, transferee):
+    while True:
+        conf_trans = input(f"{transferor['full_name']} would you like to transfer money to {transferee['full_name']} y/n? ")
+        if conf_trans == "n":
+            return
+        elif conf_trans == "y":
+            amount = transfer_amount(transferor)
+            return
+        else:
+            "Invalid entry, please retry"
+
 
 # check_username_password(user_one)
-check_balances(user_one)
+# check_balances(user_one)
+transfer_money(user_one, user_two)
